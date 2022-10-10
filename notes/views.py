@@ -13,8 +13,8 @@ def index(request):
         return redirect('index')
     else:
         all_notes = Note.objects.all() # <-------- TROQUEI AQUI .ALL() PRA LAST()
-    return render(request, 'C:/Users/FONSECA CERTO/Desktop/INSPER/4 SEMESTRE/TECWEB/Projeto1B-Django/notes/templates/notes/index.html', {'notes': all_notes})
-        
+    return render(request, 'notes/index.html', {'notes': all_notes})
+       #C:/Users/FONSECA CERTO/Desktop/INSPER/4 SEMESTRE/TECWEB/Projeto1B-Django/notes/templates 
 
 def delete(request, id):
     if request.method == 'POST':
