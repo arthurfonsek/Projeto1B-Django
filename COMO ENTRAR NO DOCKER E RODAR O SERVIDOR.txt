@@ -1,0 +1,25 @@
+COMANDO PARA RODAR O DOCKER:
+
+	ENTRE NO cd docker
+
+	FONSECA CERTO/docker
+
+AI DA UM:
+
+	docker run --rm --name pg-docker -e POSTGRES_PASSWORD=(#Artit0#) -d -p 5432:5432 -v volumes/postgres/var/lib/postgresql/data postgres
+	
+	
+
+COMANDO PARA RODAR O SERVIDOR DJANGO
+
+	ENTRA NO cd Desktop/INSPER/4 SEMESTRE/TECWEB/Django
+
+	AI RODA
+
+	python manage.py runserver
+
+SE ACUSAR MERDA NO BANCO DE DADOS:
+
+	python manage.py makemigrations
+
+	python manage.py migrate

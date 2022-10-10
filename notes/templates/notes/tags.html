@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get-it</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../static/notes/css/getit.css" />
+  </head>
+
+  <body>
+    {% block content %} {% endblock %}
+  </body>
+</html>
+
+
+<div class="appbar">
+    <div class="appbar_title">
+      <img src="../../static/notes/img/logo-getit.png" class="logo" />
+      <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+    </div>
+    <div class= "appbar_darkmode">
+      <label class="switch">
+        <input type="checkbox" onclick="darkmode()">
+        <span class="slider"></span>
+      </label>
+      <h3 class="dark-mode-title">Dark mode</h3>
+    </div>
+  </div>
+
+
+<main class="container">
+  <a href="" class="botaovoltar">Voltar</a>
+  <p class="card-title1">Tags:</p>
+  {% if notes %}
+    {% for tag in tags %}
+    <form method="post" action="tagsin">
+      {% csrf_token %}
+      <input type="hidden" name="tag" value="{{tag}}">
+      <button type="submit" class="card-title">{{tag}}</button>
+      </form>
+    {% endfor %}
+  {% else %}
+  <p class="card-title">Não há cards, portanto não há tags!</p>
+  {% endif %} 
+</main>
+
+
+
+<script type="text/javascript" src="../../static/notes/js/getit.js"></script>

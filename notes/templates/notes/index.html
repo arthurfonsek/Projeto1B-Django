@@ -1,0 +1,67 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="appbar">
+  <div class="appbar_title">
+    <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" />
+    <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+  </div>
+  <div class= "appbar_darkmode">
+    <label class="switch">
+      <input type="checkbox" onclick="darkmode()">
+      <span class="slider"></span>
+    </label>
+    <h3 class="dark-mode-title">Dark mode</h3>
+  </div>
+</div>
+
+<main class="container">
+  <div class="rowForm">
+    <form class = "form-card" method="post">
+      {% csrf_token %}
+      <label for="titulo">Título</label>
+      <input class="form-card-title" id="titulo" type="text" name="titulo" />
+      <label for="detalhes">Detalhes</label>
+      <input class="autoresize" id="detalhes" name="detalhes"></input>
+      <label for="'tag">Tag</label>
+      <input class="form-card-tag" id="tag" type="text" name="tag" />
+      <input class="btn" id="button" type="submit"/>
+    </form>
+    <form method ='post' action='tags'>
+      {% csrf_token %}
+      <button class="button">Ver tags</button>  
+    </form>
+  </div>
+
+  <ul class = 'card-container'>
+    {% for note in notes %}
+    <li class ="card">
+      <div class="row10">
+          <h3 class="card-title">{{note.title}}</h3>
+          <p class="card-id">{{note.tag}}</p>
+      </div>  
+      <div class="card-content">
+        <p class="card-contente">{{note.content}}</p>
+        <div class="row1">
+          <input type="hidden" name="id" value="{id}">
+          <form action="delete/{{note.id}}" method="POST">
+            {% csrf_token %}
+            <button class="btn1" name="submit" value="Delete">Delete</button>
+          </form>
+          <form action="update" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{note.id}}">
+            <button class="btn1" sstype="submit" name="submit" value="Update">Update</button>
+          </form>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</main>
+
+<script type="text/javascript" src="../../static/notes/js/getit.js"></script>
+
+{% endblock %}
