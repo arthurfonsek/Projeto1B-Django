@@ -13,7 +13,7 @@ def index(request):
         return redirect('index')
     else:
         all_notes = Note.objects.all() # <-------- TROQUEI AQUI .ALL() PRA LAST()
-        return render(request, '/notes/index.html', {'notes': all_notes})
+        return render(request, 'index.html', {'notes': all_notes})
         
 
 def delete(request, id):
