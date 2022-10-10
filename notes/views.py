@@ -26,7 +26,7 @@ def updatehtml(request):
     if request.method == 'POST':
         id = request.POST.get('id')
         note = Note.objects.get(id=id)
-        return render(request, 'C:/Users/FONSECA CERTO/Desktop/INSPER/4 SEMESTRE/TECWEB/Django/notes/templates/notes/edit.html', {'note': note})
+        return render(request, 'notes/edit.html', {'note': note})
     else:
         return redirect('index')
 
@@ -37,7 +37,7 @@ def updatehtml2(request):
         for note in all_notes:
             if note.tag not in tags:
                 tags.append(note.tag)
-        return render(request, 'C:/Users/FONSECA CERTO/Desktop/INSPER/4 SEMESTRE/TECWEB/Django/notes/templates/notes/tags.html', {'tags': tags, "notes": all_notes})
+        return render(request, 'notes/tags.html', {'tags': tags, "notes": all_notes})
     else:
         return redirect('index')
 
