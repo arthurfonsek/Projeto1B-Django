@@ -50,7 +50,7 @@ def updatehtml3(request):
         # for nota in all_notes:
         #     if nota.tag == note.tag:
         #         listanotas.append(nota)
-        return render(request, 'C:/Users/FONSECA CERTO/Desktop/INSPER/4 SEMESTRE/TECWEB/Django/notes/templates/notes/tagsin.html', {'notes': all_notes})
+        return render(request, 'notes/tagsin.html', {'notes': all_notes})
 
 def update(request, id):
     if request.method == 'POST':
